@@ -9,6 +9,8 @@ else
 	root=--root $(DESTDIR)
 endif
 
+.PHONY: default install rpm
+
 default:
 	python setup.py build
 
