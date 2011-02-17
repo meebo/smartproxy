@@ -17,7 +17,7 @@ data_files = [init_files, conf_files, check_files, cron_files, cache_files]
 
 py_modules = ["smartproxy.proxy", "smartproxy.fetcher", "smartproxy.reducer", "smartproxy.streaming", "smartproxy.changes", "smartproxy.lrucache"]
 
-setup( version = '2.1',
+setup( version = '2.1.1',
 	   name = 'lounge-smartproxy2',
 	   author='meebo',
 	   author_email='shaun@meebo-inc.com',
