@@ -1,0 +1,13 @@
+smartproxy
+Copyright 2011 Meebo
+
+This project includes software developed at Meebo.
+
+Smartproxy was developed by Vijay Ragunathan, Kevin Ferguson and (to a lesser
+degree) Shaun Lindsay for Meebo.com.
+
+This product also includes the following third-party components:
+
+ * lrucache.py (http://evan.prodromou.name/Software/Python/LRUCache)
+
+   Copyright 2004, Evan Prodromou <evan@bad.dynu.ca>
