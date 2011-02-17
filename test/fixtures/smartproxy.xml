@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<pref version='1' name='/'>
+	<pref name='log_level' type='string' value='DEBUG'/>
+	<pref name='http_port' type='int' value='22008'/>
+	<pref name='proxy_conf' type='string' value='fixtures/shards.conf'/>
+	<pref name='logfile' type='string' value='log/smartproxy.log'/>
+	<pref name='reduce_pool_size' type='int' value='32'/>
+	<pref name='client_pool_size' type='int' value='16'/>
+	<pref name='couchjs_command' type='string' value='/usr/local/bin/couchjs /usr/share/couchdb/server/main.js'/>
+	<pref name='cacheable_file_path' type='string' value='fixtures/cache.json'/>
+</pref>

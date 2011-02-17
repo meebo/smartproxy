@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<pref version='1' name='/'>
+	<pref name='log_level' type='string' value='INFO'/>
+	<pref name='http_port' type='int' value='2008'/>
+	<pref name='proxy_conf' type='string' value='/etc/lounge/shards.conf'/>
+	<pref name='logfile' type='string' value='/var/log/lounge/smartproxy.log'/>
+	<pref name='reduce_pool_size' type='int' value='32'/>
+	<pref name='client_pool_size' type='int' value='16'/>
+	<pref name='cache_file_path' type='string' value='/usr/lib/lounge/smartproxy/cache.dat'/>
+	<!-- <pref name='cacheable_file_path' type='string' value='/etc/lounge/cacheable.json' /> -->
+	<pref name='couchjs_command' type='string' value='couchjs /usr/share/couchdb/server/main.js'/>
+</pref>

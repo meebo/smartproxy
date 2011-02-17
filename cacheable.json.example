@@ -1,0 +1,10 @@
+Here is an example configuration that caches some big view for up to five minutes
+and some other, smaller view, for up to an hour.
+Note that comments are not allowed in the real configuration file
+
+Matches are performed against the query path (not including query parameters)
+
+[
+	["^/mydb/_design/designdoc/_view/bigview$", 300],
+	["^/mydb/_design/designdoc/_view/otherview$", 3600]
+]

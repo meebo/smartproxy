@@ -1,0 +1,7 @@
+include cache.dat
+include cacheable.json.example
+include smartproxy.tac
+include smartproxyd
+include smartproxy.xml
+include check-smartproxy
+include check-smartproxy.py

@@ -1,0 +1,52 @@
+Meebo Smart Proxy for CouchDB
+#1.1.16 05/20/2010
+- Implement bulk GETs
+#1.1.15 11/10/2009
+- Fix view errors
+#1.1.14 03/11/2009
+- cache now persists to disk on exit
+#1.1.13 02/18/2009
+- uses existing cache after expiration until cache refresh is complete
+- if multiple requests for an uncached uri occur, they are all handled when the first request completes
+#1.1.12 01/14/2009 r17805
+- getPage throttle
+#1.1.11 01/06/2009
+- get pool size from a pref
+- probabilistic caching
+- cache active_by_category
+#1.1.10 01/06/2009 r17332
+- cache polls/all for 5 min
+- use a reducer pool
+#1.1.9 12/17/2008 r17332
+- cache poll response views for 15 min.  can be extended
+  to do generic caching.
+#1.1.8 12/03/2008 r16845
+- check-smartproxy checked the wrong url
+#1.1.7 12/03/2008 r16829
+- check-smartproxy checked the wrong config var
+#1.1.6 12/03/2008 r16829
+- fix error handling
+#1.1.5 12/03/2008 r16828
+- Include smartproxy config in rpm
+#1.1.4 12/03/2008 r16826
+- Fix RPM dependencies
+#1.1.3 11/25/2008 r16676
+- Handle _all_docs
+- Handle count queries
+- Proxy GET, PUT, POST on special documents
+#1.1.2 11/24/2008 r16661
+- Farm out GET, PUT, and DELETE on a single database.
+#1.1.1 11/19/2008 r16486
+- Failover fetching of the reduce function (and make that operation non-blocking as well)
+#1.1.0 11/18/2008 r16477
+- Add basic failover (doesn't handle failover of fetching the reduce function yet)
+#1.0.3 11/18/2008 r16433
+- Handle maps without a reduce
+- Fix dependencies
+#1.0.2 11/17/2008 r16374
+- Paths and other packaging details
+#1.0.1 11/17/2008 r16372
+- Use conf lib
+- Reduce bug fix
+#1.0.0 1/12/2008 r16271
+- Initial checkin
