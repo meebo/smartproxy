@@ -1,9 +1,9 @@
 About
 -----
 
-Smartproxy is a Twisted_ daemon that implements the CouchDB-Lounge_ hash to proxy
-key requests to backend CouchDB_ nodes. It supplements dumbproxy_ with support
-for views, changes and other high level API operations.
+Smartproxy is a Twisted_ daemon that implements the CouchDB-Lounge_ hash to
+proxy and re-reduce requests to backend CouchDB_ nodes. It supplements
+dumbproxy_ with support for views, changes and other high level API operations.
 
 The hash function is the same as used by BigCouch_.
 
