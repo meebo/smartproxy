@@ -23,5 +23,5 @@ Please see the LICENSE_ and NOTICE_ files for details.
 .. _CouchDB: http://couchdb.apache.org/
 .. _dumbproxy: https://github.com/meebo/dumbproxy
 .. _BigCouch: https://cloudant.com/
-.. _LICENSE: https://github.com/meebo/dumbproxy/blob/master/LICENSE
-.. _NOTICE: https://github.com/meebo/dumbproxy/blob/master/NOTICE
+.. _LICENSE: https://github.com/meebo/smartproxy/blob/master/LICENSE
+.. _NOTICE: https://github.com/meebo/smartproxy/blob/master/NOTICE
