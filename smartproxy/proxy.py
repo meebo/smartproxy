@@ -533,7 +533,7 @@ class SmartproxyResource(resource.Resource):
 		body = get_body(request, {})
 		if 'keys' in body:
 			for key in body['keys']:
-				where = which_shard(lounge_hash(key), nShards)
+				where = which_shard(lounge_hash(key), numShards)
 				shardContent[where].append(key)
 
 		for i,shard in enumerate(shards):
