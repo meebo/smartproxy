@@ -826,7 +826,7 @@ class SmartproxyResource(resource.Resource):
 		deferred = defer.Deferred()
 		deferred.addCallback(make_success_callback(request))
 		deferred.addErrback(make_errback(request))
-		fetcher = UuidFetcher(db_name, urls, deferred, body, self.conf_data)
+		fetcher = UuidFetcher(db_name, urls, deferred, body, self.conf_data, self.client_queue)
 
 		doc = cjson.decode(body)
 		if '_id' in doc:

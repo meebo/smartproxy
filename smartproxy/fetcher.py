@@ -130,20 +130,13 @@ class HttpFetcher:
 			self.next()
 
 class UuidFetcher(HttpFetcher):
-	def __init__(self, db, urls, deferred, body, conf):
-		HttpFetcher.__init__(self, "uuids", urls, deferred, None)
+	def __init__(self, db, urls, deferred, body, conf, client_queue):
+		HttpFetcher.__init__(self, "uuids", urls, deferred, client_queue)
 		self._db = db
 		if self._db.endswith('/'):
 			self._db = self._db[:-1]
 		self._body = body
 		self._config = conf
-
-	def fetch(self, request=None):
-		url = self._remaining_nodes[0]
-		self._remaining_nodes = self._remaining_nodes[1:]
-		d = client.getPage(url)
-		d.addCallback(self._onsuccess)
-		d.addErrback(self._onerror)
 	
 	def _onsuccess(self, page):
 		uuid = cjson.decode(page)["uuids"][0]
@@ -151,18 +144,31 @@ class UuidFetcher(HttpFetcher):
 		self.put_doc(uuid)
 	
 	def put_doc(self, id):
-		# identify the shard for this uui
-		shards = self._config.primary_shards(self._db)
-		idx = proxy.lounge_hash(id) % len(shards)
-		shard = shards[idx]
+		# identify the shard for this uuid
+		shards = self._config.shards(self._db)
+		shard_idx = proxy.which_shard(proxy.lounge_hash(id), len(shards))
 
-		def succeed(data):
-			self._deferred.callback((int(self.factory.status), prep_backend_headers(self.factory.response_headers, self._config), data))
-		def fail(data):
-			self._deferred.errback(data)
-		self.factory = getPageWithHeaders('/'.join([shard, id]), method='PUT', postdata=self._body)
-		self.factory.deferred.addCallback(succeed)
-		self.factory.deferred.addErrback(fail)
+		# generate upstream tuples for getPageFromAny
+		shard_uris = itertools.imap(
+			lambda idx, uri: (
+				idx,                 # replica identifier
+				'/'.join([uri, id]), # shard uri
+				[],                  # args
+				{ 'method' : 'PUT',  # kwargs
+				  'postdata' : self._body
+				}),
+			itertools.count(),
+			self._config.nodes(shards[shard_idx]))
+
+		# set up a callback to unpack
+		def succeed(result):
+			data, identifier, factory = result
+			self._deferred.callback(
+				(int(factory.status),
+				 prep_backend_headers(factory.response_headers, self._config),
+				 data))
+
+		getPageFromAny(shard_uris).addCallbacks(succeed, self._deferred.errback)
 
 
 class MapResultFetcher(HttpFetcher):
