@@ -416,7 +416,7 @@ class SmartproxyResource(resource.Resource):
 					shards))
 
 		heartbeat = None
-		if 'heartbeat' in request.args and continuous:
+		if 'heartbeat' in request.args:
 			heartbeat = task.LoopingCall(lambda: request.write('\n'))
 			if request.args['heartbeat'][-1] == 'true':
 				heartbeat.start(60) # default 1 bpm
